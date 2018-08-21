@@ -15,6 +15,8 @@
 		049D53CC211D1EFD008007B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53CB211D1EFD008007B9 /* main.m */; };
 		049D53D6211D1EFD008007B9 /* AVPlayerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53D5211D1EFD008007B9 /* AVPlayerDemoTests.m */; };
 		049D53E1211D1EFD008007B9 /* AVPlayerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53E0211D1EFD008007B9 /* AVPlayerDemoUITests.m */; };
+		049D53F1211D3BA5008007B9 /* CAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53F0211D3BA5008007B9 /* CAVPlayer.m */; };
+		049D53F4211D3BB5008007B9 /* CAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53F3211D3BB5008007B9 /* CAVPlayerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		049D53DC211D1EFD008007B9 /* AVPlayerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVPlayerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		049D53E0211D1EFD008007B9 /* AVPlayerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoUITests.m; sourceTree = "<group>"; };
 		049D53E2211D1EFD008007B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049D53EF211D3BA5008007B9 /* CAVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAVPlayer.h; sourceTree = "<group>"; };
+		049D53F0211D3BA5008007B9 /* CAVPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAVPlayer.m; sourceTree = "<group>"; };
+		049D53F2211D3BB5008007B9 /* CAVPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAVPlayerView.h; sourceTree = "<group>"; };
+		049D53F3211D3BB5008007B9 /* CAVPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAVPlayerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 			children = (
 				049D53BC211D1EFB008007B9 /* AppDelegate.h */,
 				049D53BD211D1EFB008007B9 /* AppDelegate.m */,
+				049D53EE211D3B65008007B9 /* CAVPlayer */,
 				049D53BF211D1EFB008007B9 /* ViewController.h */,
 				049D53C0211D1EFB008007B9 /* ViewController.m */,
 				049D53C2211D1EFB008007B9 /* Main.storyboard */,
@@ -130,6 +137,17 @@
 				049D53E2211D1EFD008007B9 /* Info.plist */,
 			);
 			path = AVPlayerDemoUITests;
+			sourceTree = "<group>";
+		};
+		049D53EE211D3B65008007B9 /* CAVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				049D53EF211D3BA5008007B9 /* CAVPlayer.h */,
+				049D53F0211D3BA5008007B9 /* CAVPlayer.m */,
+				049D53F2211D3BB5008007B9 /* CAVPlayerView.h */,
+				049D53F3211D3BB5008007B9 /* CAVPlayerView.m */,
+			);
+			path = CAVPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				049D53C1211D1EFB008007B9 /* ViewController.m in Sources */,
+				049D53F4211D3BB5008007B9 /* CAVPlayerView.m in Sources */,
+				049D53F1211D3BA5008007B9 /* CAVPlayer.m in Sources */,
 				049D53CC211D1EFD008007B9 /* main.m in Sources */,
 				049D53BE211D1EFB008007B9 /* AppDelegate.m in Sources */,
 			);
