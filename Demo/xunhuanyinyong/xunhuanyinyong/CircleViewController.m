@@ -7,10 +7,11 @@
 //
 
 #import "CircleViewController.h"
-
+#import "Person.h"
 @interface CircleViewController ()
 @property (nonatomic,copy)void (^test)(void);
 @property (nonatomic,copy)NSString * name;
+@property (nonatomic,strong)Person * p;
 @end
 
 @implementation CircleViewController
@@ -18,17 +19,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __block NSString *value = @"1";
-    NSLog(@"aStr指针内存地址：%x",&value);
-    void(^test1)(void) = ^(){
-        value = @"2";
-        NSLog(@"aStr指针内存地址：%x",&value);
-
-    };
+    self.p = [[Person alloc] init];
+    [self.p addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
-    test1();
-    NSLog(@"aStr指针内存地址：%x",&value);
     // Do any additional setup after loading the view.
+}
+/**
+ 当被监听的对象的属性值发生改变时，观察者会调用该方法
+ @param keyPath 监听的属性
+ @param object  监听的对象
+ @param change  新旧值
+ @param context 额外参数
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    NSLog(@"%@发生改变",keyPath);
+    NSLog(@"change==%@",change);
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+ 
+    self.p.name = @"a";
 }
 
 - (void)dealloc

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043FC4512133D90300D1DADD /* UIColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FC4502133D90300D1DADD /* UIColor+Ext.m */; };
+		043FC4552133DD5B00D1DADD /* avplayer_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 043FC4542133DD5B00D1DADD /* avplayer_play.png */; };
+		043FC4582133F3C400D1DADD /* smallpause.png in Resources */ = {isa = PBXBuildFile; fileRef = 043FC4562133F3C400D1DADD /* smallpause.png */; };
+		043FC4592133F3C400D1DADD /* smallplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 043FC4572133F3C400D1DADD /* smallplay.png */; };
 		049D53BE211D1EFB008007B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53BD211D1EFB008007B9 /* AppDelegate.m */; };
 		049D53C1211D1EFB008007B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D53C0211D1EFB008007B9 /* ViewController.m */; };
 		049D53C4211D1EFB008007B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049D53C2211D1EFB008007B9 /* Main.storyboard */; };
@@ -37,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043FC44F2133D90300D1DADD /* UIColor+Ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Ext.h"; sourceTree = "<group>"; };
+		043FC4502133D90300D1DADD /* UIColor+Ext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Ext.m"; sourceTree = "<group>"; };
+		043FC4542133DD5B00D1DADD /* avplayer_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avplayer_play.png; sourceTree = "<group>"; };
+		043FC4562133F3C400D1DADD /* smallpause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallpause.png; sourceTree = "<group>"; };
+		043FC4572133F3C400D1DADD /* smallplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallplay.png; sourceTree = "<group>"; };
 		049D53B9211D1EFB008007B9 /* AVPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049D53BC211D1EFB008007B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		049D53BD211D1EFB008007B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 		049D53F0211D3BA5008007B9 /* CAVPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAVPlayer.m; sourceTree = "<group>"; };
 		049D53F2211D3BB5008007B9 /* CAVPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAVPlayerView.h; sourceTree = "<group>"; };
 		049D53F3211D3BB5008007B9 /* CAVPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAVPlayerView.m; sourceTree = "<group>"; };
+		04E8E94C212EAD2000BB312F /* CAVDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAVDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,12 @@
 				049D53F0211D3BA5008007B9 /* CAVPlayer.m */,
 				049D53F2211D3BB5008007B9 /* CAVPlayerView.h */,
 				049D53F3211D3BB5008007B9 /* CAVPlayerView.m */,
+				04E8E94C212EAD2000BB312F /* CAVDefine.h */,
+				043FC4542133DD5B00D1DADD /* avplayer_play.png */,
+				043FC4562133F3C400D1DADD /* smallpause.png */,
+				043FC4572133F3C400D1DADD /* smallplay.png */,
+				043FC44F2133D90300D1DADD /* UIColor+Ext.h */,
+				043FC4502133D90300D1DADD /* UIColor+Ext.m */,
 			);
 			path = CAVPlayer;
 			sourceTree = "<group>";
@@ -255,7 +271,10 @@
 			files = (
 				049D53C9211D1EFD008007B9 /* LaunchScreen.storyboard in Resources */,
 				049D53C6211D1EFD008007B9 /* Assets.xcassets in Resources */,
+				043FC4582133F3C400D1DADD /* smallpause.png in Resources */,
+				043FC4552133DD5B00D1DADD /* avplayer_play.png in Resources */,
 				049D53C4211D1EFB008007B9 /* Main.storyboard in Resources */,
+				043FC4592133F3C400D1DADD /* smallplay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				049D53C1211D1EFB008007B9 /* ViewController.m in Sources */,
+				043FC4512133D90300D1DADD /* UIColor+Ext.m in Sources */,
 				049D53F4211D3BB5008007B9 /* CAVPlayerView.m in Sources */,
 				049D53F1211D3BA5008007B9 /* CAVPlayer.m in Sources */,
 				049D53CC211D1EFD008007B9 /* main.m in Sources */,

@@ -8,6 +8,10 @@
 
 #import "CAVPlayer.h"
 #import <AVFoundation/AVFoundation.h>
+#import "CAVDefine.h"
+
+
+
 @interface CAVPlayer()
 
 @property (strong, nonatomic)AVPlayer *myPlayer;//播放器
@@ -25,6 +29,7 @@
     if (self) {
         self.frame = frame;
         self.playView = Playview;
+        [self initPlayer];
     }
     return self;
 }
@@ -33,22 +38,89 @@
     
     self.playerLayer.frame = self.frame;
     [self.playView.layer addSublayer:self.playerLayer];
-    
-    
-    
-    //通过KVO来观察status属性的变化，来获得播放之前的错误信息
     [self.item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:
+(NSDictionary<NSString *,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"status"]) {
+        //取出status的新值
+        AVPlayerItemStatus status = [change[NSKeyValueChangeNewKey]intValue];
+        switch (status) {
+            case AVPlayerItemStatusFailed:
+                NSLog(@"item 有误");
+                self.isReadToPlay = NO;
+                self.status = Fail;
+                break;
+            case AVPlayerItemStatusReadyToPlay:
+                NSLog(@"准好播放了");
+                self.isReadToPlay = YES;
+                self.status = ReadToPlay;
+//                self.avSlider.maximumValue = self.item.duration.value / self.item.duration.timescale;
+                break;
+            case AVPlayerItemStatusUnknown:
+                NSLog(@"视频资源出现未知错误");
+                self.isReadToPlay = NO;
+                self.status = Fail;
+                break;
+            default:
+                break;
+        }
+    }
+    //移除监听（观察者）
+    [object removeObserver:self forKeyPath:@"status"];
+}
+
+
 -(void)play{
-    [self.myPlayer play];
+    if (![self.url containsString:@"http"]) {
+        CAVLog(@"播放地址错误");
+        return;
+    }
+    if (!self.isReadToPlay) {
+        return;
+    }
+    //播放
+    if (self.myPlayer.rate != 0.0) {
+        [self.myPlayer pause];
+    }else{
+        [self.myPlayer play];
+    }
 }
 
 -(void)pause{
     [self.myPlayer pause];
 }
 
+-(void)playUrl:(NSString *)url{
 
+    self.url = url;
+}
+
+- (CAVStatus)status{
+    if (self.isReadToPlay) {
+        _status = ReadToPlay;
+        if (self.myPlayer.rate == 0.0) {
+            _status = Paused;
+        }else if (self.myPlayer.rate > 0.0 ){
+            _status = Play;
+        }
+    }else{
+        _status = Fail;
+    }
+    
+    return _status;
+}
+
+
+-(void)relase{
+    [self.playerLayer removeFromSuperlayer];
+    self.playView = nil;
+    self.myPlayer = nil;
+    [self.item removeObserver:self forKeyPath:@"status"];
+    self.item = nil;
+}
 
 /**
  播放器
@@ -74,11 +146,20 @@
     return _item;
 }
 
-- (NSString *)url{
-    if ([_url isEqualToString:@""] || _url == nil || ![_url containsString:@"http"]) {
-        [self pause];
-    }
-    return _url;
+
+/**
+ 重写set方法
+ */
+- (void)setUrl:(NSString *)url{
+    
+//    [self.item removeObserver:self forKeyPath:@"status"];
+//    self.item = nil;
+    _url = url;
+    self.item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:self.url]];
+    [self.item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.myPlayer replaceCurrentItemWithPlayerItem:self.item];
+    });
 }
 
 /**
@@ -89,6 +170,7 @@
 - (AVPlayerLayer *)playerLayer{
     if (!_playerLayer) {
         _playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.myPlayer];
+//        _playerLayer.frame = self.frame;
     }
     return _playerLayer;
 }
